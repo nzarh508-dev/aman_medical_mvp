@@ -8,7 +8,7 @@ from flask import Flask, render_template_string, request, redirect, url_for
 # تأكد أن أسماء الدوال تطابق الموجود في database.py لديك
 from database import init_db, add_patient, get_patient_by_token
 
-app = Flask(name)
+app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "aman-medica-secret-key")
 
 # تهيئة قاعدة البيانات عند بدء التشغيل
@@ -284,4 +284,5 @@ def view_patient_by_nfc(token):
 if name == "main":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
 
