@@ -84,7 +84,7 @@ EMERGENCY_PAGE_TEMPLATE = """
 <body>
     <div class="card">
         {% if patient %}
-            <div class="badge">بطاقة طوارئ طبية - أمان ميديكا</div>
+            <div class="badge"> بطاقة طوارئ طبية - أمان ميديكل</div>
             <h1>{{ patient.full_name }}</h1>
 
             <div class="row">
@@ -95,12 +95,21 @@ EMERGENCY_PAGE_TEMPLATE = """
             <div class="row">
                 <div class="label">الحالات الطبية / الحساسيات / الأدوية</div>
                 <div class="alert-box">{{ patient.medical_conditions }}</div>
-            </div>
+            </div> 
 
             <div class="row">
                 <div class="label">جهة الاتصال للطوارئ</div>
                 <div class="value">{{ patient.emergency_contact }}</div>
-            </div>
+            </div> {% if patient.emergency_contact %}
+<div style="margin-top: 12px; margin-bottom: 16px;">
+  <a href="tel:{{ patient.emergency_contact | replace(' ', '') | replace('-', '') }}"
+     style="display: block; width: 100%; box-sizing: border-box; background-color: #d93025; color: #ffffff;
+            text-align: center; padding: 14px 16px; border-radius: 10px;
+            text-decoration: none; font-weight: bold; font-size: 17px;">
+    📞 اتصال مباشر بجهة الطوارئ ({{ patient.emergency_contact }})
+  </a>
+</div>
+{% endif %}
 
             <div class="row" style="border-bottom: none; margin-bottom: 0;">
                 <div class="label">رمز البطاقة (NFC Token)</div>
@@ -146,7 +155,7 @@ ADD_PATIENT_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أمان ميديكا - إضافة مريض</title>
+    <title>أمان ميديكل - إضافة مريض</title>
     <style>
         body {
             font-family: Tahoma, Arial, sans-serif;
@@ -246,7 +255,7 @@ ADD_PATIENT_TEMPLATE = """
             </div>
             <div class="field">
                 <label>جهة الاتصال للطوارئ</label>
-                <input type="text" name="emergency_contact" placeholder="مثال: أخوه - 0500000000" required>
+                <input type="text" name="emergency_contact" placeholder="مثال: أخوه الوالد الاقارب - 0500000000" required>
             </div>
             <button type="submit">حفظ وتشفير البيانات</button>
         </form>
