@@ -214,8 +214,7 @@ def home():
 def create_patient():
     if request.method == "POST":
         nfc_token = generate_nfc_token()
-        full_name =
-        request.form.get("full_name", "").strip()
+        full_name = request.form.get("full_name", "").strip()
         blood_type = request.form.get("blood_type", "").strip()
         allergies = request.form.get("allergies", "").strip() or "لا يوجد"
         medical_conditions = request.form.get("medical_conditions", "").strip() or "لا يوجد"
@@ -285,3 +284,4 @@ def view_patient_by_nfc(token):
 if name == "main":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
