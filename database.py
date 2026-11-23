@@ -174,7 +174,7 @@ def add_patient(
     return patient_id
 
 
-if name == "main":
+if __name__ == "__main__":
     init_db()
     sample = "حساسية بنسلين - سكري"
     enc = encrypt_text(sample)
