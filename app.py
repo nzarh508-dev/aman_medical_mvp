@@ -7,7 +7,7 @@ from flask import Flask, render_template_string, request, redirect, url_for
 # تأكد أن ملف database.py يحتوي على هذه الدوال بنفس الأسماء
 from database import init_db, add_patient, get_patient_by_token
 
-app = __Flask__(__name__)
+app = Flask (__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "aman-medica-secret-key")
 
 # تهيئة قاعدة البيانات عند بدء التشغيل
