@@ -295,7 +295,7 @@ def view_patient_by_nfc(token):
             allergies_text = ln.replace("الحساسيات:", "", 1).strip() or "لا يوجد"
         elif ln.startswith("الأمراض المزمنة:"):
             chronic_text = ln.replace("الأمراض المزمنة:", "", 1).strip() or "لا يوجد"
-            if chronic_text == raw_conditions and lines:
+    if chronic_text == raw_conditions and lines:
         filtered = [ln for ln in lines if not ln.startswith(("العمر:", "الحساسيات:", "الأمراض المزمنة:"))]
         chronic_text = "\n".join(filtered) if filtered else "لا يوجد"
 
